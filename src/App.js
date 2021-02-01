@@ -13,8 +13,8 @@ const App = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const result = await axios(`https://randomuser.me/api/?inc=dob,picture,email,name,phone&?page=3&results=10&seed=abc`)
-      console.log(result.data)
-      setItems(result.data)
+      console.log(result.data.results)
+      setItems(result.data.results)
       setisLoading(false)
     }
     fetchItems()
