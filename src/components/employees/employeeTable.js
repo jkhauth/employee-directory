@@ -1,9 +1,10 @@
 import React from 'react';
-
+import EmployeeItem from "./employeeItem"
 const EmployeeTable = ({items, isLoading}) => {
+
     return isLoading ? (<h1>Loading....</h1>) : 
     (<section>
-    {items.map((item) => (<h1>{item.name.first} {item.name.last}</h1>
+    {items.map((item) => (<EmployeeItem key={item.name.last} item={item}></EmployeeItem>
     ))}
     </section>)
 }
