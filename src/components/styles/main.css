@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+    background-color: rgb(255, 188, 112);
+    font-family: "Josefin Sans", cursive;
+}
+
+h1 {
+    color:white;
+    font-size: 100px;
+}
+
+th {
+    background-color: slategray;
+    color: white;
+}
+
+tbody{
+    background-color: #ffcfae;
+    color: black;
+}
+
+table {
+    width: 900px;
+    margin-top: 10px;
+}
+
+input {
+    width: 500px;
+}
+
+.sortbutton {
+    font-size: 1em;
+    padding: 0px;
+    color: white;
+}
+
+.tableheadings{
+    background-color: grey;
+}

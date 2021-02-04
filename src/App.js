@@ -1,33 +1,44 @@
-import './App.css';
 import React, { useState, useEffect } from "react"
-// import Nav from "./components/Nav"
 import Header from "./components/ui/Header"
 import EmployeeTable from "./components/employees/employeeTable"
-import Search from "./components/ui/Search"
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "./components/styles/main.css"
 
 const App = () => {
-  //WRITE JAVASCRIPT HERE
-  const [items, setItems ] = useState([])
-  const [isLoading, setisLoading ] = useState(true)
+  const [employees, setEmployees ] = useState([]);
+  const [isLoading, setisLoading ] = useState(true);
+  const [search, setSearch ] = useState("")
+  const [filterEmployees, setFilteredEmployees] = useState([]);
   
   useEffect(() => {
-    const fetchItems = async () => {
-      const result = await axios(`https://randomuser.me/api/?inc=id,dob,picture,email,name,phone&?page=3&results=10&seed=abc`)
-      console.log(result.data.results)
-      setItems(result.data.results)
+    const fetchEmployees = async () => {
+      const result = await axios(`https://randomuser.me/api/?results=20`)
+      setEmployees(result.data.results)
       setisLoading(false)
     }
-    fetchItems()
-  }, [])
-  
+    fetchEmployees()
+  }, []);
+
+  useEffect(() => {
+        setFilteredEmployees(employees.filter(function(employee){
+        return ((employee.name.first + employee.name.last).toLowerCase()).includes(search.toLowerCase())
+      }))
+  }, [employees, search]);
+
+  const ascendingAge = () => {
+    setFilteredEmployees(employees.sort(function (a,b) {return a.dob.age - b.dob.age;}))
+  } 
+
+  const descendingAge = () => {
+    setFilteredEmployees(employees.sort(function (a,b) {return b.dob.age - a.dob.age;}))
+  }
 
   return (
-    <div className="App">
+    <div className="App d-flex flex-column align-items-center pl-5 pr-5">
     <Header />
-    {/* <Nav /> */}
-    <Search />
-    <EmployeeTable isLoading={isLoading} items={items}/>
+    <input className="text-center"type="text" placeholder="Search Employees" autoFocus value={search} onChange={(e) => setSearch(e.target.value)}/>
+    <EmployeeTable isLoading={isLoading} employees={filterEmployees} ascendingAge={ ascendingAge } descendingAge={ descendingAge }/>
     </div>
   );
 }

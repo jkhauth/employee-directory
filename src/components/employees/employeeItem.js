@@ -1,10 +1,10 @@
 import React from 'react';
 
-const EmployeeItem = ({item}) => {
+const EmployeeItem = ({employee}) => {
     return (
-        <div>
-            {item.name.first} {item.name.last}
-        </div>
+        <tbody>
+           <td><img src={employee.picture.thumbnail} alt="employeethumbnail"></img></td><td>{employee.name.first} {employee.name.last}</td><td>{employee.dob.age}</td><td>{employee.email}</td>
+        </tbody>
     )
 }
 
