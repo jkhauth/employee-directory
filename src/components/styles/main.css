@@ -23,6 +23,13 @@ tbody{
 table {
     width: 900px;
     margin-top: 10px;
+    box-shadow: -11px 15px 10px #151414;
+    
+}
+
+table, tbody, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
 input {

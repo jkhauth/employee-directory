@@ -10,7 +10,9 @@ const App = () => {
   const [isLoading, setisLoading ] = useState(true);
   const [search, setSearch ] = useState("")
   const [filterEmployees, setFilteredEmployees] = useState([]);
-  
+  const [ascendingEmployees, setAscendingEmployees] = useState([]);
+  const [descendingEmployees, setDescendingEmployees] = useState([]);
+
   useEffect(() => {
     const fetchEmployees = async () => {
       const result = await axios(`https://randomuser.me/api/?results=20`)
@@ -24,14 +26,15 @@ const App = () => {
         setFilteredEmployees(employees.filter(function(employee){
         return ((employee.name.first + employee.name.last).toLowerCase()).includes(search.toLowerCase())
       }))
-  }, [employees, search]);
+  }, [employees, search, descendingEmployees, ascendingEmployees]);
+
 
   const ascendingAge = () => {
-    setFilteredEmployees(employees.sort(function (a,b) {return a.dob.age - b.dob.age;}))
+    setAscendingEmployees(employees.sort(function (a,b) {return a.dob.age - b.dob.age;}))
   } 
 
   const descendingAge = () => {
-    setFilteredEmployees(employees.sort(function (a,b) {return b.dob.age - a.dob.age;}))
+    setDescendingEmployees(employees.sort(function (a,b) {return b.dob.age - a.dob.age;}))
   }
 
   return (
