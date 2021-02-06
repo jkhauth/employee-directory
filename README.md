@@ -1,6 +1,6 @@
 # Employee Directory
 ## Description: 
- This is a React based application, demonstrating the solutions on rerendering API information seemlessly
+ This is a React based application, demonstrating the solutions on rerendering API information seemlessly. Using an employee dictory as a visual for these solutions, you are able to see all employees, search a specific, or sort them in a particular way.
  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ## Table of Contents: 
